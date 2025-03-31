@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<meta charset="utf-8"></head>
+<body>
+
+<h1>JavaScript 回调</h1>
+<p>进行计算，然后显示结果。</p>
+<input type=text id="a" value=50 style="width:50px">+<input type=text id="b" value=50 style="width:50px">
+=<input type=text id="sum" value="" style="width:50px">
+<br>
+<button type="button" id="btn1" onclick="myCalculator(document.getElementById('a').value,document.getElementById('b').value, myDisplayer)">计算</button><br>
+
+
+<script>
+var start;
+function myDisplayer(some) {
+console.log("开始执行3");
+const start3 = Date.now();
+while (Date.now() - start3 < 3000) {} // 阻塞主线程3秒
+console.log("这行会立即执行3");
+
+  document.getElementById("sum").value = some;
+console.log("开始执行4");
+const start4 = Date.now();
+while (Date.now() - start4 < 3000) {} // 阻塞主线程3秒
+console.log("这行会立即执行4");
+  
+}
+
+function myCalculator(num1, num2, myCallback) {
+console.log("开始执行1");
+const start1 = Date.now();
+while (Date.now() - start1 < 3000) {} // 阻塞主线程3秒
+console.log("这行会立即执行1");
+
+  let sum = parseInt(num1) + parseInt(num2);
+console.log("开始执行2");
+const start2 = Date.now();
+while (Date.now() - start2 < 3000) {} // 阻塞主线程3秒
+console.log("这行会立即执行2");
+  
+  myCallback(sum);
+  
+
+console.log("mycalc最后了");
+  
+}
+
+</script>
+
+</body>
+</html>
