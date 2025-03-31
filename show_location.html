@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <script src="mapjs.js"></script>
+    <meta http-equiv="Content-Type"  content="text/html; charset=utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>浏览器定位</title>
+    <style>  
+	.class_input {
+	background-color:red;
+	width: 100px;
+	}
+    </style>
+</head>
+<body align="center">
+当前坐标<br>lontitude:<input type=text class="class_input" id="lon" ><br> latitude:<input type=text id="lat" >
+</body>
+</html>
+<script type="text/javascript">
+  var geolocation = new BMap.Geolocation();  
+  function fun(r){
+      if(this.getStatus() == BMAP_STATUS_SUCCESS){
+          document.getElementById("lon").value=r.point.lng.toFixed(2);
+          document.getElementById("lat").value=r.point.lat.toFixed(2);
+          console.log("r.point.lat.toFixed(2):"+r.point.lat.toFixed(2));
+      }
+      else {
+          alert('failed'+this.getStatus());
+      }        
+  }  
+  geolocation.getCurrentPosition(fun);  
+</script>

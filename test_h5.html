@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<!--也可以直接用style属性，来设置元素的css-->
+<style>
+button {
+font-size=15px;
+color:blue;
+}
+.text-css {
+width: 80px;
+color: red;
+}
+#input {
+background-color: rgb(0,255,0);
+padding: 5px 10px 15px;
+margin: 100px;
+}
+</style>
+</head>
+<body>
+
+<div id="div1" style="margin:30px"> <!--直接用style属性设置样式-->
+<button type="button" id="btn1">修改样式</button><br>
+1+2+...+<input type=text id="max" value=50 style="width:50px"><br>
+<input type=button id="input" value="计算和" onclick="javascript: sum()"><br>
+计算结果<input id="sum_value" class="" type=text value="">
+</body>
+</html>
+<script>
+function sum(){
+	var max=document.getElementById("max").value;
+	var total=0;
+	for (var i=1;i<max;i++) total+=i;
+	document.getElementById("sum_value").value=total;
+}
+function changeCSS(){
+//document.getElementById("sum_value").style.cssText="color:red;size:80px;"
+//document.getElementById("sum_value").setAttribute("class", "text-css");
+document.getElementById("sum_value").style.color="red";
+document.getElementById("sum_value").style.size="80px";
+}
+
+/*
+       .class  表示所有 class="name"元素 的JS对象
+       #id      表示id="name"的元素的JS对象
+       Element_name,  元素选择器，如<input ...>
+*/
+//对象选择器：document.getElementById(), document.getElementByName(), document.getElementByTagName  获取到JS对象
+//通用：document.querySelector(xx);   document.querySelectorAll(xx); //xx支持 .class、#id、Element 
+var btn1=document.getElementById("btn1");
+btn1.addEventListener("click",changeCSS);
+
+hello = (name)=> "Hello,"+name;
+console.log(hello("Sha"));
+</script>
