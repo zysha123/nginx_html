@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+</head>
+<body>
+<label id="state"></label>
+
+<script>
+
+var maxFactoryCapacity=10;
+var factoryCapacity=new Array();
+
+function add(){
+        if(factoryCapacity.length<maxFactoryCapacity){
+            factoryCapacity.push("1");
+            document.getElementById("state").innerHTML="生产中, 容量为"+factoryCapacity.length;
+            console.log("生产中, 容量为"+factoryCapacity.length); 
+        }else {
+        console.log("工厂已满, 暂停生产");
+        }
+    }
+    
+function    remove(){
+        if(factoryCapacity.length>0){
+            factoryCapacity.shift ();
+            document.getElementById("state").innerHTML="消费中, 容量为"+factoryCapacity.length;
+            console.log("消费中, 容量为"+factoryCapacity.length);   
+        /* console.log("r工厂容量为"+factoryCapacity.length)*/
+        }else {
+        console.log("工厂已空, 停止消费");
+        }
+    } 
+    
+  var prorate=10, conrate=20;
+  
+  console.log("prorate=="+prorate+","+"conrate=="+conrate)
+  
+        /*执行一个定时函数，如果仓库未满，按照生产速率往仓库塞值*/
+setInterval(() => this.add() ,prorate);
+        /*执行一个定时函数，如果仓库未空，按照生产速率往仓库取值*/
+setInterval(() => this.remove(),conrate);
+            
+</script>
+
+</body>
+</html>

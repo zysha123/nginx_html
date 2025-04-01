@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"></head>
+<body>
+
+<h1 style="text-align:center">JavaScript Promise</h1>
+
+<p id="demo" style="text-align:center"></p>
+
+<script>
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+fun=function(resolve, reject) {
+  let req = new XMLHttpRequest();
+  req.open('GET', "test_async_innerfile.html");  
+  req.onload = function() {  
+    if (req.status == 200) {
+      resolve(req.response);
+    } else {
+      reject("找不到文件");
+    }
+  };
+  req.send();
+}
+
+fun1=function(value) {myDisplayer(value);},
+fun2=function(error) {myDisplayer(error);}
+
+
+let myPromise = new Promise(fun);
+myPromise.then(fun1,fun2);
+//myPromise.then(fun1).catch(fun2);
+
+
+</script>
+
+</body>
+</html>
