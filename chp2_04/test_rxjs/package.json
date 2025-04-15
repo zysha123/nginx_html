@@ -1,5 +1,5 @@
 {
-  "name": "use_package",
+  "name": "test_rxjs",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,5 +9,8 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "type": "module"
+  "dependencies": {
+    "rxjs": "^7.8.2"
+  },
+"type": "module"
 }

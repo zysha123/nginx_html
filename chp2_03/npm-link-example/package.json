@@ -10,5 +10,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "get-subtract-test": "^1.0.3",
+    "rxjs": "^7.8.2"
+  }
 }

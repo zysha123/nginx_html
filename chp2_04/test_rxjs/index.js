@@ -1,8 +1,4 @@
-//const obj=require('get-subtract-test');
-import * as obj from 'get-subtract-test';
 import {Observable} from 'rxjs';
-console.log(obj. getSubtract(10,5));
-
 const observable = new Observable((subscriber) => {
   subscriber.next(1);
   subscriber.next(2);
@@ -19,4 +15,3 @@ observable.subscribe({
   complete() { console.log('done'); }
 });
 console.log('just after subscribe');
-
